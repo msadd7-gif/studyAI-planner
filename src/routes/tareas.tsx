@@ -41,7 +41,7 @@ function Tareas() {
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!title.trim()) return toast.error("Ponle un nombre a la tarea");
+    if (!title.trim()) { toast.error("Ponle un nombre a la tarea"); return; }
     addTask({ title: title.trim(), subject: subject.trim() || "General", type, deadline, difficulty, estHours, progress: 0 });
     setTitle("");
     setSubject("");
@@ -75,7 +75,7 @@ function Tareas() {
           </div>
           <div>
             <Label>Horas estimadas: <b>{estHours} h</b></Label>
-            <Slider className="mt-3" min={0.5} max={30} step={0.5} value={[estHours]} onValueChange={(v) => setEstHours(v[0])} />
+            <Slider className="mt-3" min={0.5} max={30} step={0.5} value={[estHours]} onValueChange={(v) => setEstHours(v[0] ?? 0)} />
           </div>
           <Button type="submit" size="lg" className="w-full rounded-full font-bold shadow-pop">
             <Plus className="h-4 w-4" /> Agregar tarea
@@ -104,7 +104,7 @@ function Tareas() {
                 <ProgressBar value={t.progress} />
                 <span className="w-10 text-right text-sm font-bold">{t.progress}%</span>
               </div>
-              <Slider className="mt-3" min={0} max={100} step={5} value={[t.progress]} onValueChange={(v) => updateTask(t.id, { progress: v[0] })} aria-label="Avance" />
+              <Slider className="mt-3" min={0} max={100} step={5} value={[t.progress]} onValueChange={(v) => updateTask(t.id, { progress: v[0] ?? 0 })} aria-label="Avance" />
             </div>
           ))}
         </div>

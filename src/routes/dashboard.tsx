@@ -92,7 +92,7 @@ function Dashboard() {
             <h2 className="text-xl font-bold">🗓️ Cronograma semanal</h2>
             <div className="flex w-full items-center gap-3 sm:w-64">
               <span className="whitespace-nowrap text-sm font-bold">{hoursPerDay} h/día</span>
-              <Slider min={1} max={12} step={0.5} value={[hoursPerDay]} onValueChange={(v) => setHoursPerDay(v[0])} />
+              <Slider min={1} max={12} step={0.5} value={[hoursPerDay]} onValueChange={(v) => setHoursPerDay(v[0] ?? 0)} />
             </div>
           </div>
           <div className="mt-4 space-y-3">
