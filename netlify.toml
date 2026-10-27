@@ -1,0 +1,12 @@
+# Netlify deployment configuration for StudyAI Planner (TanStack Start + Nitro).
+# Nitro auto-detects Netlify during the build and generates the server function
+# (SSR, server functions, API routes) plus routing rules automatically —
+# no manual redirect/rewrite rules are needed, so deep links and refreshes
+# work out of the box.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
